@@ -22,7 +22,7 @@
             if (!info || !info.url) return
 
             if (GH_ACTIONS_URL_REGEX.test(info.url)) {
-                addBadgesToWorkflowRuns()
+                setTimeout(addBadgesToWorkflowRuns, 100)
             }
         })
     }
