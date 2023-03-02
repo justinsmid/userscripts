@@ -5,7 +5,7 @@
 // @description  Adds a `Next user` button that selects the next assignee
 // @author       Justin Smid <justin250899@hotmail.com>
 // @match        https://*/jira/software/projects*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=atlassian.net
 // @grant        window.onurlchange
 // @require http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
