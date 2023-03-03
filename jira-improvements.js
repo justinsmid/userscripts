@@ -38,8 +38,26 @@
             container.style.setProperty("z-index", "0", "important")
         })
 
+        // Add hover title to epic badges for full badge text
+        // JIRA cuts badges off at 200px. A lot of times, the epic's title is larger, so there's no
+        // way of seeing the full title.
+        addTitleToEpicBadges()
+        // Re-apply titles on scroll since not add badges may be visible initially, so those wouldn't have the title otherwise
+        const scrollable = $("[data-test-id*='scrollable']")
+        if (scrollable.length > 0) {
+            scrollable.get()[0].addEventListener("scroll", addTitleToEpicBadges)
+        }
+
         // Add next user button
         addNextUserButton()
+    }
+
+    function addTitleToEpicBadges() {
+        const epicBadges = $("[data-testid*='ui.epic']")
+        epicBadges.each((_, badge) => {
+            const container = $(badge).parent().parent().get()[0]
+            container.title = badge.textContent
+        })
     }
 
     function addNextUserButton() {
