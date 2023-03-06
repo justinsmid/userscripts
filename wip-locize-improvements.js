@@ -5,7 +5,7 @@
 // @description  TODO
 // @author       Justin Smid <justin250899@hotmail.com>
 // @match        https://www.locize.app/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=locize.app
 // @grant        window.onurlchange
 // @require http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
