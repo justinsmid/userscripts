@@ -97,7 +97,7 @@
         clone.id = NEXT_USER_BUTTON_ID
 
         // Update clone's text
-        const textContainer = $(clone).find("div[data-test-id*='filters.common.ui.list']")
+        const textContainer = $(clone).find("div[data-testid*='filters.common.ui.list']")
         textContainer.get()[0].firstChild.textContent = "Next user >"
 
         // Remove clone's icon
