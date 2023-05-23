@@ -110,7 +110,7 @@
         clone.addEventListener("click", () => {
             const userIds = []
 
-            const searchParam = window.location.search
+            const searchParams = new URLSearchParams(window.location.search)
 
             const usersContainer = $("fieldset[data-test-id='filters.ui.filters.assignee.stateless.assignee-filter']")
             const userContainers = Array.from(usersContainer.find("div").first().children())
@@ -120,14 +120,14 @@
             const openUserDropdownAvatarContainer = $(userContainers[userContainers.length - 2])
             const openUserDropdownAvatar = openUserDropdownAvatarContainer.find("input[name='assignee']")
 
-            if (!searchParam || !searchParam.includes("assignee=")) {
+            if (!searchParams || !searchParams.has("assignee")) {
                 // No current user selected; select first user.
                 firstUserAvatar.click()
 
                 return
             } else {
                 // User is selected. Determine who it is and select the next user.
-                const [_, encodedUserId] = searchParam.match(/assignee=(.+)/)
+                const encodedUserId = searchParams.get("assignee")
                 const userId = decodeURIComponent(encodedUserId)
 
                 const selectedUserAvatar = usersContainer.find(`input[id='assignee-${userId}']`)
