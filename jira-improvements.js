@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         JIRA improvements
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Adds a `Next user` button that selects the next assignee
+// @version      1.1
+// @description  Adds `Next user` & `Prev user` buttons that selects the prev/next assignee
+// @updateURL    https://github.com/justinsmid/userscripts/edit/master/jira-improvements.js
+// @downloadURL  https://github.com/justinsmid/userscripts/edit/master/jira-improvements.js
 // @author       Justin Smid <justin250899@hotmail.com>
 // @match        https://*/jira/software/projects*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=atlassian.net
