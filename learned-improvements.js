@@ -33,6 +33,60 @@
 
     function main() {
         _makeTextareasResizable()
+        makeModalsClosable()
+    }
+
+    function makeModalsClosable() {
+        $("body").on("keydown", (event) => {
+            if (event.key !== "Escape") return
+
+            const modals = getModals()
+            modals.forEach(closeModal)
+        })
+
+        $("body").on("click", (event) => {
+            const modals = getModals()
+
+            modals.forEach((modal) => {
+                const modalContent = modal.children[0]
+
+                const isWithinModal = isEventWithinElement(event, modal)
+                const isWithinModalContent = isEventWithinElement(event, modalContent)
+
+                if (isWithinModal && !isWithinModalContent) {
+                    closeModal(modal)
+                }
+            })
+        })
+    }
+
+    function getModals() {
+        // Learned seems to apply a randomized class to its modal element. Filter the root-level elements for the ones that have modals' css properties
+        return $("body > div").toArray().filter((element) => {
+            const position = $(element).css("position")
+            const zIndex = $(element).css("zIndex")
+
+            return position === "fixed" && zIndex === "1000"
+        })
+    }
+
+    function closeModal(modal) {
+        // Again, Learned doesn't apply a clear class or anything to the close button, so we have to look at certain CSS properties to determine
+        // which element is the close button.
+        const closeButton = findChildDeep(modal, (child) => {
+            const width = child.getAttribute("width")
+            const height = child.getAttribute("height")
+            const mask = $(child).css("-webkit-mask-image")
+
+            return [width, height].every((value) => value === "24px") && /icons-.+close.+\.svg/.test(mask)
+        })
+
+        if (!closeButton) {
+            console.warn("Could not find close button to close modal", { modal })
+            return
+        }
+
+        closeButton.click()
     }
 
     function makeTextareasResizable() {
@@ -49,5 +103,26 @@
         setInterval(() => {
             makeTextareasResizable()
         }, 3000)
+    }
+
+    function findChildDeep(element, predicate) {
+        if (predicate(element)) {
+            return element
+        }
+
+        for (let i = 0; i < element.children.length; i++) {
+            const child = element.children[i]
+            const found = findChildDeep(child, predicate)
+            if (found) {
+                return found
+            }
+        }
+
+        return null
+    }
+
+    function isEventWithinElement(event, element) {
+        const target = event.target
+        return target === element || element.contains(target)
     }
 })();
