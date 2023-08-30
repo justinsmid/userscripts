@@ -72,7 +72,7 @@
         }
 
         // Find existing actions
-        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container']").get()[0].firstChild
+        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container']").get()[0].lastChild
         const existingActions = Array.from(filterActionsContainer.children)
 
         // Find first visible action
@@ -236,7 +236,7 @@
         }
 
         // Find existing actions
-        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container']").get()[0].firstChild
+        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container']").get()[0].lastChild
         const existingActions = Array.from(filterActionsContainer.children)
 
         // Find first visible action
