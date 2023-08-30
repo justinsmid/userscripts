@@ -89,11 +89,18 @@
         closeButton.click()
     }
 
+    const MIN_TEXTAREA_HEIGHT = "120px"
+    const MAX_TEXTAREA_HEIGHT = "550px"
+
     function makeTextareasResizable() {
-        $(".ql-editor").each((_, textarea) => {
+        $(".ql-container").each((_, container) => {
+            container.style.minHeight = MIN_TEXTAREA_HEIGHT
+            container.style.maxHeight = MAX_TEXTAREA_HEIGHT
+
+            const textarea = $(container).find(".ql-editor").get()[0]
             textarea.style.resize = "vertical"
-            textarea.style.minHeight = "120px"
-            textarea.style.maxHeight = "550px"
+            textarea.style.minHeight = MIN_TEXTAREA_HEIGHT
+            textarea.style.maxHeight = MAX_TEXTAREA_HEIGHT
         })
     }
 
