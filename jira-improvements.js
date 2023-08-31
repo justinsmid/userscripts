@@ -72,7 +72,7 @@
         }
 
         // Find existing actions
-        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container']").get()[0].lastChild
+        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container'] > div").get()[0]
         const existingActions = Array.from(filterActionsContainer.children)
 
         // Find first visible action
@@ -89,6 +89,7 @@
 
             return false
         })
+
         if (!actionToClone) {
             console.warn("Could not find a suitable action to clone.")
             return
@@ -236,7 +237,7 @@
         }
 
         // Find existing actions
-        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container']").get()[0].lastChild
+        const filterActionsContainer = $("div[data-test-id='software-filters.ui.list-filter-container'] > div").get()[0]
         const existingActions = Array.from(filterActionsContainer.children)
 
         // Find first visible action
